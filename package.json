@@ -1,0 +1,50 @@
+{
+  "name": "spm-agent-mongodb",
+  "version": "1.28.0",
+  "description": "MongoDbmonitoring agent for SPM by Sematext",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "bin": {
+    "spm-mongodb": "lib/index.js",
+    "spm-client-diagnostics": "bin/spm-client-diagnostics.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sematext/spm-agent-mongodb.git"
+  },
+  "keywords": [
+    "SPM",
+    "APM",
+    "application performance monitoring",
+    "Sematext",
+    "performance monitoring",
+    "monitoring",
+    "alerting",
+    "anomaly detection",
+    "heartbeat",
+    "metrics",
+    "custom metrics",
+    "devops",
+    "operations",
+    "dashboards",
+    "profiling",
+    "mongodb",
+    "agent",
+    "logging"
+  ],
+  "author": "Sematext Group, Inc.",
+  "license": "Copyright (c) Sematext Group, Inc.",
+  "bugs": {
+    "url": "https://github.com/sematext/spm-agent-mongodb/issues"
+  },
+  "homepage": "http://www.sematext.com",
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "flat": "^1.6.0",
+    "measured": "^1.0.2",
+    "mongodb": "^2.0.46",
+    "spm-agent": "^1.28.0"
+  }
+}
