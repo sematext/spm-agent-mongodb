@@ -19,8 +19,8 @@ WantedBy=multi-user.target" > $SERVICE_FILE
 echo "Service file $SERVICE_FILE:"
 cat $SERVICE_FILE
 systemctl enable $SERVICE_NAME
-sleep 3 
-systemctl status $SERVICE_NAME
+systemctl stop $SERVICE_NAME > /dev/null
+systemctl start $SERVICE_NAME
 
 }
 
