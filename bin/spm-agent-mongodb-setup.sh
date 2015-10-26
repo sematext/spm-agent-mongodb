@@ -14,8 +14,8 @@ function generate_file()
 	systemctl status $SERVICE_NAME
 }
 
-token={$1-"$SPM_TOKEN"}
-mongodb={$2-"$SPM_MONGODB_URL"}
+token={$1-$SPM_TOKEN}
+mongodb={$2-$SPM_MONGODB_URL}
 
 if [[ -n "$token" && -n "$mongodb" ]] ; then 
 	command=$(which spm-mongodb)
