@@ -3,12 +3,10 @@
   "version": "1.28.0",
   "description": "MongoDbmonitoring agent for SPM by Sematext",
   "main": "lib/index.js",
-  "directories": {
-    "test": "test"
-  },
   "bin": {
     "spm-mongodb": "lib/index.js",
-    "spm-client-diagnostics": "bin/spm-client-diagnostics.js"
+    "spm-agent-mongodb-setup.sh": "./bin/spm-agent-mongodb-setup.sh",
+    "spm-client-diagnostics": "./bin/spm-client-diagnostics.js"
   },
   "repository": {
     "type": "git",
