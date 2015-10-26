@@ -14,10 +14,10 @@ function generate_file()
 	systemctl status $SERVICE_NAME
 }
 
-token={$1-$SPM_TOKEN}
-mongodb={$2-$SPM_MONGODB_URL}
 
-if [[ -n "$token" && -n "$mongodb" ]] ; then 
+if [[ -n "$1" && -n "$2" ]] ; then 
+  token=$1
+  mongodb=$2
 	command=$(which spm-mongodb)
   generate_file $command $token $mongodb;
 else 
