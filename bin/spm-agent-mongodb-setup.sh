@@ -3,15 +3,25 @@ export SERVICE_NAME=spm-agent-mongodb.service
 export SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}"
 function generate_file() 
 {
-	echo -e "[Unit]\nDescription=SPM for MongoDB\nAfter=network.target\n[Service]\nRestart=always\nRestartSec=10 \nType=simple\n
-	ExecStart=$1 $2 $3\n[Install]\n
-	WantedBy=multi-user.target" > $SERVICE_FILE
+echo -e \
+"
+[Unit]
+Description=SPM for MongoDB
+After=network.target
 
-	echo "Service file $SERVICE_FILE:"
-	cat $SERVICE_FILE
-	systemctl enable $SERVICE_NAME
-	sleep 3 
-	systemctl status $SERVICE_NAME
+[Service]
+Restart=always\nRestartSec=10
+ExecStart=$1 $2 $3
+
+[Install]
+WantedBy=multi-user.target" > $SERVICE_FILE
+
+echo "Service file $SERVICE_FILE:"
+cat $SERVICE_FILE
+systemctl enable $SERVICE_NAME
+sleep 3 
+systemctl status $SERVICE_NAME
+
 }
 
 
