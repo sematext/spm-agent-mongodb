@@ -44,12 +44,12 @@ systemctl start $SERVICE_NAME
 
 function install_script ()
 {
-	if [ -d /usr/share/upstart ]; then 
+	if if [[ `/sbin/init --version` =~ upstart ]]>/dev/null; then 
 		echo "Generate upstart script ${UPSTART_SERVICE_FILE}"
 		generate_upstart $1 $2 $3 	
 		return
 	fi
-	if [ -d /usr/lib/systemd ]; then 
+	if [[ `systemctl` =~ -\.mount ]]; then 
 		echo "Generate systemd script "
 		generate_systemd $1 $2 $3 
 		return 
