@@ -39,7 +39,6 @@ cat $SYSTEMD_SERVICE_FILE
 systemctl enable $SERVICE_NAME
 systemctl stop $SERVICE_NAME > /dev/null
 systemctl start $SERVICE_NAME
-
 }
 
 function install_script ()
@@ -63,11 +62,11 @@ if [[ -n "$1" && -n "$2" ]] ; then
   install_script $command $token $mongodb;
 else 
 	echo "Missing paramaters. Usage:"
-	echo " spm-agent-mongodb-setup.sh SPM_TOKEN MONGODB_URL (mongodb://dbuser:dbpassword@localhost:27017)"
+	echo " spm-agent-mongodb-setup.sh SPM_TOKEN MONGODB_URL (mongodb://dbuser:dbpassword@localhost:27017/admin)"
 	echo "Please obtain your application token from https://apps.sematext.com/"
 	read -p "SPM Token: " token
 	token=${token:-none}
-	read -p "MongoDB URL (mongodb://localhost:27017/local):" mongodb
+	read -p "MongoDB URL (mongodb://localhost:27017/admin):" mongodb
 	mongodb=${mongodb:-mongodb://localhost:27017/local}
 	command=$(which spm-mongodb)
   install_script $command $token $mongodb;
