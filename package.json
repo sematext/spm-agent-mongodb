@@ -43,9 +43,9 @@
     "flat": "^1.6.0",
     "measured": "^1.0.2",
     "mongodb": "^2.0.46",
-    "spm-agent": "^1.28.0",
     "node-df": "^0.1.1",
+    "procfs-stats": "0.0.4",
+    "spm-agent": "^1.28.0",
     "which": "^1.2.0"
-
   }
 }
