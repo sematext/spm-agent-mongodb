@@ -31,7 +31,7 @@ After=network.target
 
 [Service]
 Restart=always\nRestartSec=10
-ExecStart=$1 $2 
+ExecStart=$1 $2 $3
 
 [Install]
 WantedBy=multi-user.target" > $SYSTEMD_SERVICE_FILE
@@ -57,12 +57,12 @@ echo -e \
 
 	if [[ `/sbin/init --version` =~ upstart ]]>/dev/null; then 
 		echo "Generate upstart script ${UPSTART_SERVICE_FILE}"
-		generate_upstart $1 $2 	
+		generate_upstart $1 $2 	$3
 		return
 	fi
 	if [[ `systemctl` =~ -\.mount ]]; then 
 		echo "Generate systemd script "
-		generate_systemd $1 $2 
+		generate_systemd $1 $2 $3
 		return 
 	fi
 }
