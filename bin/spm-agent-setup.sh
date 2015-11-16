@@ -12,7 +12,7 @@ echo -e "description \"SPM for MongoDB\"
 start on runlevel [2345]
 stop on runlevel [06]
 respawn
-env SPM_MONGODB_URL=$3
+env SPM_MONGODB_URLS=$3
 env SPM_TOKEN=$2
 chdir  /tmp
 exec $1 $2 " > /etc/init/${SERVICE_NAME}.conf
@@ -70,7 +70,7 @@ echo -e \
 if [[ -n "$1" && -n "$2" ]] ; then 
   token=$1
   mongodb=$2
-	command=$(which spm-mongodb)
+	command=$(which spm-agent-mongodb)
   install_script $command $token $mongodb;
 else 
 	echo "${COLORred}Missing paramaters. Usage:"
