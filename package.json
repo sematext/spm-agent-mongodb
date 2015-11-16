@@ -41,6 +41,7 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "flat": "^1.6.0",
+    "ls": "^0.1.0",
     "measured": "^1.0.2",
     "mongodb": "^2.0.46",
     "node-df": "^0.1.1",
