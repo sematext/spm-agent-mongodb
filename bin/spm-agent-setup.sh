@@ -12,10 +12,8 @@ echo -e "description \"SPM for MongoDB\"
 start on runlevel [2345]
 stop on runlevel [06]
 respawn
-env SPM_MONGODB_URLS=$3
-env SPM_TOKEN=$2
 chdir  /tmp
-exec $1 $2 " > /etc/init/${SERVICE_NAME}.conf
+exec $1 " > /etc/init/${SERVICE_NAME}.conf
 CMD="service restart ${SERVICE_NAME}"
 echo $CMD
 sudo $CMD
@@ -31,7 +29,7 @@ After=network.target
 
 [Service]
 Restart=always\nRestartSec=10
-ExecStart=$1 $2 $3
+ExecStart=$1
 
 [Install]
 WantedBy=multi-user.target" > $SYSTEMD_SERVICE_FILE
@@ -47,13 +45,12 @@ function install_script ()
 {
 	mkdir /etc/spmagent
 echo -e \
-"[tokens] 
-	spm = $2 
-	logsene = 
+"[tokens] more
+ spm = $2 
 [mongodb] 
-	url[] = $3 
+ url[] = $3 
 [logsene] 
-	tailFiles = /var/log/mongodb/mongodb.log" > /etc/spmagent/config
+ tailFiles = /more /etc/spmagentvar/log/mongodb/mongodb.log" > /etc/spmagent/config
 
 	if [[ `/sbin/init --version` =~ upstart ]]>/dev/null; then 
 		echo "Generate upstart script ${UPSTART_SERVICE_FILE}"

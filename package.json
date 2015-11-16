@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "bin": {
     "spm-agent-mongodb": "lib/index.js",
-    "spm-agent-setup.sh": "./bin/spm-agent-setup.sh",
+    "spm-agent-setup.sh": "bin/spm-agent-setup.sh",
     "spm-client-diagnostics": "./bin/spm-client-diagnostics.js"
   },
   "repository": {
