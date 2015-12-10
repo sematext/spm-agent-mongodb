@@ -1,6 +1,7 @@
 [![bitHound Overalll Score](https://www.bithound.io/github/sematext/spm-agent-mongodb/badges/score.svg)](https://www.bithound.io/github/sematext/spm-agent-mongodb) [![Build Status](https://travis-ci.org/sematext/spm-agent-mongodb.svg?branch=master)](https://travis-ci.org/sematext/spm-agent-mongodb)
 
 This is the MongoDB monitoring Agent for [SPM Performance Monitoring]([SPM Docker Monitoring](http://sematext.com/spm/)
+
 Work in progress ... 
 
 # Preparation 
