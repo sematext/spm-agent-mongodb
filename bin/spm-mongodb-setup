@@ -86,14 +86,17 @@ launchctl start com.sematext.spm-agent-mongodb
 
 function install_script ()
 {
+	SPM_AGENT_CONFIG_FILE=/etc/spmagent/config
 	mkdir /etc/spmagent
 echo -e \
 "[tokens]
  spm = $2 
 [mongodb] 
  url[] = $3 
-[logsene] 
- tailFiles = /more /etc/spmagentvar/log/mongodb/mongodb.log" > /etc/spmagent/config
+" > $SPM_AGENT_CONFIG_FILE
+
+echo "Create config file file $SPM_AGENT_CONFIG_FILE:"
+cat $SPM_AGENT_CONFIG_FILE
 
 	if [[ $PLATFORM = "Darwin" ]]; then
 		echo "Generate upstart script ${LAUNCHCTL_SERVICE_FILE}"
