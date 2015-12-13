@@ -21,6 +21,7 @@ npm i sematext/spm-agent-mongodb -g
 spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
 ```
 
+
 4. Configuration 
 
 The setup script will store your configuration in /etc/spmagent/config 
@@ -36,12 +37,14 @@ Then restart the SPM MongoDB Agent after config changes, depending on the init s
     sudo systemctl stop spm-agent-mongodb
     sudo systemctl start spm-agent-mongodb
   ```
-- Launchd (Mac OS X): ```
+- Launchd (Mac OS X): 
+```
     sudo launchctl stop com.sematext.spm-agent-mongodb
     sudo launchctl stop com.sematext.spm-agent-mongodb
-  ```
+```
 
 For tests you can just run the agent from command line:
+
 ```
 spm-agent-mongodb SPM_TOKEN MONGODB_URL
 ```
