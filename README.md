@@ -30,7 +30,7 @@ In case you like to change settings later edit /etc/spmagent/config
 Then restart the SPM MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
-  sudo service spm-agent-mongodb restart 
+    sudo service spm-agent-mongodb restart 
 ```
 - Systemd (Linux others):  
 ```
