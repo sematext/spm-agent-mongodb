@@ -1,7 +1,7 @@
 {
   "name": "spm-agent-mongodb",
   "version": "1.29.3",
-  "description": "MongoDbmonitoring agent for SPM by Sematext",
+  "description": "SPM Agent for monitoring MongoDB",
   "main": "lib/index.js",
   "bin": {
     "spm-agent-mongodb": "lib/index.js",
