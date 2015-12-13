@@ -38,10 +38,10 @@ Then restart the SPM MongoDB Agent after config changes, depending on the init s
     sudo systemctl start spm-agent-mongodb
   ```
 - Launchd (Mac OS X): 
-```
+  ```
     sudo launchctl stop com.sematext.spm-agent-mongodb
     sudo launchctl stop com.sematext.spm-agent-mongodb
-```
+  ```
 
 For tests you can just run the agent from command line:
 
