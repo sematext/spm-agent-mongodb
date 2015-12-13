@@ -30,7 +30,6 @@ Description=SPM for MongoDB
 After=network.target
 
 [Service]
-EnvironmentFile=-/etc/sysconfig/spm-agent-mongodb
 Restart=always\nRestartSec=10
 ExecStart=$1
 
