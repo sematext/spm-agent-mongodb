@@ -8,6 +8,8 @@ e=$'\e'
 COLORblue="$e[0;36m"
 COLORred="$e[0;31m"
 COLORreset="$e[0m"
+#nodeExecutable=`$(which node)||$(which nodejs)`
+
 function generate_upstart()
 {
 echo -e "description \"SPM for MongoDB\"
@@ -16,9 +18,7 @@ stop on runlevel [06]
 respawn
 chdir  /tmp
 exec $1 " > /etc/init/${SERVICE_NAME}.conf
-CMD="service restart ${SERVICE_NAME}"
-echo $CMD
-sudo $CMD
+runCommand "service restart ${SERVICE_NAME}"
 }
 
 function generate_systemd() 
@@ -45,11 +45,18 @@ spmagent_logger__console=true
 
 echo "Service file $SERVICE_FILE:"
 cat $SYSTEMD_SERVICE_FILE
-systemctl enable $SERVICE_NAME
-systemctl stop $SERVICE_NAME > /dev/null
-systemctl start $SERVICE_NAME
+runCommand "systemctl enable $SERVICE_NAME" 1
+runCommand "systemctl stop $SERVICE_NAME " 2
+runCommand "systemctl start $SERVICE_NAME" 3
 sleep 1
-systemctl status $SERVICE_NAME
+runCommand "systemctl status $SERVICE_NAME" 4
+runCommand "journald -n 10 -u $SERVICE_NAME" 5
+}
+
+function runCommand ()
+{
+	echo $2 $1
+	$1
 }
 
 function generate_launchctl() 
@@ -82,10 +89,11 @@ echo -e \
 
 
 echo "Service file $LAUNCHCTL_SERVICE_FILE:"
-cat $LAUNCHCTL_SERVICE_FILE
-launchctl unload -w -F $LAUNCHCTL_SERVICE_FILE
-launchctl load -w -F $LAUNCHCTL_SERVICE_FILE
-launchctl start com.sematext.spm-agent-mongodb
+# cat $LAUNCHCTL_SERVICE_FILE
+runCommand "launchctl unload -w -F $LAUNCHCTL_SERVICE_FILE" 1
+runCommand "launchctl load -w -F $LAUNCHCTL_SERVICE_FILE" 2
+runCommand "launchctl start com.sematext.spm-agent-mongodb" 3
+runCommand "tail -n 10 /Library/Logs/spm-agent-mongodb.log" 4
 }
 
 
@@ -99,12 +107,14 @@ echo -e \
 [mongodb] 
  url[] = $3 
 " > $SPM_AGENT_CONFIG_FILE
+runCommand "chown root $SPM_AGENT_CONFIG_FILE"
+runCOmmand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
 
-echo "Create config file file $SPM_AGENT_CONFIG_FILE:"
-cat $SPM_AGENT_CONFIG_FILE
+echo "Create config file: $SPM_AGENT_CONFIG_FILE"
+# cat $SPM_AGENT_CONFIG_FILE
 
 	if [[ $PLATFORM = "Darwin" ]]; then
-		echo "Generate upstart script ${LAUNCHCTL_SERVICE_FILE}"
+		echo "Generate launchd script ${LAUNCHCTL_SERVICE_FILE}"
 		generate_launchctl $1 $2 $3
 		return
 	fi
