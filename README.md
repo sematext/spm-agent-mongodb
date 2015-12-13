@@ -29,22 +29,21 @@ The setup script will store your configuration in /etc/spmagent/config
 In case you like to change settings later edit /etc/spmagent/config 
 Then restart the SPM MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
-  ```
+```
   sudo service spm-agent-mongodb restart 
-  ```
+```
 - Systemd (Linux others):  
-  ```
+```
     sudo systemctl stop spm-agent-mongodb
     sudo systemctl start spm-agent-mongodb
-  ```
+```
 - Launchd (Mac OS X): 
-  ```
+```
     sudo launchctl stop com.sematext.spm-agent-mongodb
     sudo launchctl stop com.sematext.spm-agent-mongodb
-  ```
+```
 
 For tests you can just run the agent from command line:
-
 ```
 spm-agent-mongodb SPM_TOKEN MONGODB_URL
 ```
