@@ -50,7 +50,7 @@ runCommand "systemctl stop $SERVICE_NAME " 2
 runCommand "systemctl start $SERVICE_NAME" 3
 sleep 1
 runCommand "systemctl status $SERVICE_NAME" 4
-runCommand "journald -n 10 -u $SERVICE_NAME" 5
+runCommand "journalctl -n 10 -u $SERVICE_NAME" 5
 }
 
 function runCommand ()
