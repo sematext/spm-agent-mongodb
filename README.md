@@ -48,4 +48,9 @@ For tests you can just run the agent from command line:
 spm-agent-mongodb SPM_TOKEN MONGODB_URL
 ```
 
+# Support 
+
+- Twitter: [@sematext](http://www.twitter.com/sematext)
+- Blog: [blog.sematext.com](http://blog.sematext.com)
+- Homepage: [www.sematext.com](http://www.sematext.com)
 
