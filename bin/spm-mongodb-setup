@@ -107,7 +107,7 @@ echo -e \
  url[] = $3 
 " > $SPM_AGENT_CONFIG_FILE
 runCommand "chown root $SPM_AGENT_CONFIG_FILE"
-runCOmmand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
+runCommand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
 
 echo "Create config file: $SPM_AGENT_CONFIG_FILE"
 # cat $SPM_AGENT_CONFIG_FILE
