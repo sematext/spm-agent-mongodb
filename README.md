@@ -47,9 +47,10 @@ spm-agent-mongodb SPM_TOKEN MONGODB_URL
 
 # Results
 
-![](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png)
+![Metrics Overview](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png)
+
 More Information: 
-- [Announcement blog post](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png) 
+- [Announcement blog post](http://blog.sematext.com/2015/12/16/mongodb-monitoring/) 
 - [MongoDB reports video](https://www.youtube.com/watch?v=BIERrXzbiNM) 
 
 # Support 
