@@ -15,7 +15,7 @@ apt-get install libkrb5-dev
 # Setup 
 ```sh
 # Install spm-agent-mongodb 
-npm i sematext/spm-agent-mongodb -g
+npm i spm-agent-mongodb -g
 # Install systemd or upstart service file for spm-agent-mongodb
 spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
 ```
