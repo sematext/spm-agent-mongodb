@@ -2,27 +2,24 @@
 
 This is the MongoDB monitoring Agent for [SPM Docker Monitoring](http://sematext.com/spm/)
 
-Work in progress ... 
-
 # Preparation 
 
-1. [Install Node.js](https://nodejs.org/en/download/package-manager/) 
-2. The MongoDB driver might need libkrb5-dev for Kerberos authentication
+1. Get a free account at [sematext.com/spm](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "MongoDB" and copy the SPM Application Token - or execute the commands displayed in the Sematext UI (which are described here as well)
+
+3. [Install Node.js](https://nodejs.org/en/download/package-manager/) on your MongoDB server
+4. The MongoDB driver might need libkrb5-dev for Kerberos authentication (if you use Kerberos ...)
 ```
 apt-get install libkrb5-dev
 ```
-
-3. Setup 
-
+# Setup 
 ```sh
 # Install spm-agent-mongodb 
 npm i sematext/spm-agent-mongodb -g
 # Install systemd or upstart service file for spm-agent-mongodb
 spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
 ```
-
-
-4. Configuration 
+# Configuration 
 
 The setup script will store your configuration in /etc/spmagent/config 
 
@@ -47,6 +44,13 @@ For tests you can just run the agent from command line:
 ```
 spm-agent-mongodb SPM_TOKEN MONGODB_URL
 ```
+
+# Results
+
+![](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png)
+More Information: 
+- [Announcement blog post](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png) 
+- [MongoDB reports video](https://www.youtube.com/watch?v=BIERrXzbiNM) 
 
 # Support 
 
