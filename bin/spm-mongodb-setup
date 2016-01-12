@@ -18,7 +18,9 @@ stop on runlevel [06]
 respawn
 chdir  /tmp
 exec $1 " > /etc/init/${SERVICE_NAME}.conf
-runCommand "service ${SERVICE_NAME} restart"
+runCommand "initctl reload-configuration"
+stop spm-agent-mongodb 2> /dev/null
+runCommand "start ${SERVICE_NAME}"
 }
 
 function generate_systemd() 
