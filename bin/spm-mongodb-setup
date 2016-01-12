@@ -18,7 +18,8 @@ stop on runlevel [06]
 respawn
 chdir  /tmp
 exec $1 " > /etc/init/${SERVICE_NAME}.conf
-runCommand "service ${SERVICE_NAME} restart"
+runCommand "initctl reload-configuration"
+runCommand "restart ${SERVICE_NAME}"
 }
 
 function generate_systemd() 
