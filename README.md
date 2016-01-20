@@ -5,9 +5,11 @@ This is the MongoDB monitoring Agent for [SPM Performance Monitoring](http://sem
 # Preparation 
 
 1. Get a free account at [sematext.com/spm](https://apps.sematext.com/users-web/register.do)  
+
 2. [Create an SPM App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "MongoDB" and copy the SPM Application Token - or execute the commands displayed in the Sematext UI (which are described here as well)
 
 3. [Install Node.js](https://nodejs.org/en/download/package-manager/) on your MongoDB server
+
 4. The MongoDB driver might need libkrb5-dev for Kerberos authentication (if you use Kerberos ...)
 ```
 apt-get install libkrb5-dev
