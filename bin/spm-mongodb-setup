@@ -104,9 +104,9 @@ function install_script ()
 	mkdir /etc/spmagent
 echo -e \
 "[tokens]
- spm = $2 
+spm = $2 
 [mongodb] 
- url[] = $3 
+url[] = $3 
 " > $SPM_AGENT_CONFIG_FILE
 runCommand "chown root $SPM_AGENT_CONFIG_FILE"
 runCommand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
