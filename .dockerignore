@@ -1,0 +1,7 @@
+.git
+.git/*
+*.md
+.npmrc
+.ssh
+spmlogs
+spmdb
