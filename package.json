@@ -1,6 +1,6 @@
 {
   "name": "spm-agent-mongodb",
-  "version": "1.29.19",
+  "version": "1.29.21",
   "description": "SPM Agent for monitoring MongoDB",
   "main": "lib/index.js",
   "bin": {
@@ -47,6 +47,7 @@
     "node-df": "^0.1.1",
     "procfs-stats": "0.0.4",
     "spm-agent": "^1.28.0",
+    "spm-agent-os": "^1.30.0",
     "which": "^1.2.0"
   }
 }
