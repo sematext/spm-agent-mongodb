@@ -1,6 +1,6 @@
 {
   "name": "spm-agent-mongodb",
-  "version": "1.29.24",
+  "version": "1.30.2",
   "description": "SPM Agent for monitoring MongoDB",
   "main": "lib/index.js",
   "bin": {
@@ -40,14 +40,12 @@
   "homepage": "http://www.sematext.com",
   "dependencies": {
     "adm-zip": "^0.4.7",
-    "flat": "^1.6.0",
-    "ls": "^0.1.0",
+    "flat": "^2.0.1",
+    "ls": "^0.2.0",
     "measured": "^1.0.2",
-    "mongodb": "^2.0.46",
-    "node-df": "^0.1.1",
-    "procfs-stats": "0.0.4",
-    "spm-agent": "^1.28.0",
-    "spm-agent-os": "^1.30.0",
-    "which": "^1.2.0"
+    "mongodb": "^2.2.5",
+    "spm-agent": "^1.30.4",
+    "spm-agent-os": "^1.30.8",
+    "which": "^1.2.10"
   }
 }
