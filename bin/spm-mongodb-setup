@@ -32,17 +32,13 @@ Description=SPM for MongoDB
 After=network.target
 
 [Service]
+Environment=SPM_LOG_TO_CONSOLE=true
 Restart=always\nRestartSec=10
 ExecStart=$1
 
 [Install]
 WantedBy=multi-user.target" > $SYSTEMD_SERVICE_FILE
 
-echo -e \
-"
-spmagent_logger__console=true
-
-" > /etc/sysconfig/spm-agent-mongodb
 
 echo "Service file $SERVICE_FILE:"
 cat $SYSTEMD_SERVICE_FILE
