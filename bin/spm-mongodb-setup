@@ -135,7 +135,6 @@ echo $command
 if [[ -n "$1" && -n "$2" ]] ; then 
   token=$1
   mongodb=$2
-  install_script $command $token $mongodb;
 else 
 	echo "${COLORred}Missing paramaters. Usage:"
 	echo `basename $0` "SPM_TOKEN MONGODB_URL (mongodb://dbuser:dbpassword@localhost:27017/admin)"
@@ -144,5 +143,10 @@ else
 	token=${token:-none}
 	read -p "${COLORblue}MongoDB URL (mongodb://localhost:27017/admin):$COLORreset" mongodb
 	mongodb=${mongodb:-mongodb://localhost:27017/local}
-  install_script $command $token $mongodb;
 fi 
+if [[ ${mongodb} == *mongodb://* ]]; then 
+	install_script $command $token $mongodb; 
+else
+	echo "${COLORred}Invalid MongoDB URL: ${mongodb}" 
+    echo "Please use this URL format: mongodb://user:password@localhost:27017/db-name$COLORreset"
+fi
