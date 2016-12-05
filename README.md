@@ -20,12 +20,14 @@ apt-get install libkrb5-dev
 npm i spm-agent-mongodb -g
 # Install systemd or upstart service file for spm-agent-mongodb
 spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
+# or to specify the username and password for the agent to use to connect to MongoDB
+spm-mongodb-setup SPM_TOKEN mongodb://UsernameHere:PasswordHere@localhost:27017/local
 ```
 # Configuration 
 
 The setup script will store your configuration in /etc/spmagent/config 
 
-In case you like to change settings later edit /etc/spmagent/config 
+If you with to change the settings later edit /etc/spmagent/config. 
 Then restart the SPM MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
