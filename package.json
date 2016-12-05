@@ -1,6 +1,6 @@
 {
   "name": "spm-agent-mongodb",
-  "version": "1.30.7",
+  "version": "1.30.8",
   "description": "SPM Agent for monitoring MongoDB",
   "main": "lib/index.js",
   "bin": {
