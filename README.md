@@ -18,11 +18,15 @@ apt-get install libkrb5-dev
 ```sh
 # Install spm-agent-mongodb 
 npm i spm-agent-mongodb -g
+
 # Install systemd or upstart service file for spm-agent-mongodb
 spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
+
 # or to specify the username and password for the agent to use to connect to MongoDB
 spm-mongodb-setup SPM_TOKEN mongodb://UsernameHere:PasswordHere@localhost:27017/local
 ```
+Note that the monitoring agent requires admin rights to query the relevant tables. It should have ClusterAdmin role and read access to any DB.
+
 # Configuration 
 
 The setup script will store your configuration in /etc/spmagent/config 
