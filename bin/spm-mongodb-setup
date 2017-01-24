@@ -99,14 +99,17 @@ function install_script ()
 	SPM_AGENT_CONFIG_FILE=/etc/spmagent/config
 	mkdir /etc/spmagent
 
-printf '{
-	"tokens": {
-		"spm": "%s"
-	},
-	"mongodb": {
-		"url": [ "%s" ]
-	}
-}' $2 $3 > $SPM_AGENT_CONFIG_FILE
+printf '
+tokens:
+  spm: %s
+mongodb:
+  url: 
+    - url: %s 
+
+logger:
+  level: info
+  console: true
+' $2 $3 > $SPM_AGENT_CONFIG_FILE
 runCommand "chown root $SPM_AGENT_CONFIG_FILE"
 runCommand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
 
