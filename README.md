@@ -53,6 +53,19 @@ For tests you can just run the agent from command line:
 spm-agent-mongodb SPM_TOKEN MONGODB_URL
 ```
 
+## Setup on Docker
+
+The MongoDB agent is integrated in [SPM-Client docker image](https://hub.docker.com/r/sematext/spm-client/).
+The relevant SPM_CONFIG string ist: 
+```mongodb SPM_TOKEN MONGODB_URL```. 
+
+Run SPM-Client, replace the SPM Token and MongoDB URL with your configuration: 
+```
+docker run --name spm-client --restart=always -v /var/run/docker.sock:/var/run/docker.sock -e SPM_CONFIG="mongodb YOUR_SPM_MONGODB_TOKEN mongodb://mongodbUser:mogodbPassword@mongodb-server:port/database" sematext/spm-client
+```
+
+Docker-Compose example with SPM-Client and MongoDB server: [docker-compose.yml](https://github.com/sematext/docker-spm-client/blob/master/examples/mongodb/docker-compose.yml). 
+
 # Results
 
 ![Metrics Overview](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png)
@@ -66,4 +79,3 @@ More Information:
 - Twitter: [@sematext](http://www.twitter.com/sematext)
 - Blog: [blog.sematext.com](http://blog.sematext.com)
 - Homepage: [www.sematext.com](http://www.sematext.com)
-
