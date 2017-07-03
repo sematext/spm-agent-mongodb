@@ -61,14 +61,14 @@ function generate_eu_config()
 {
 echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
 EVENTS_RECEIVER_URL=https://apps.eu.sematext.com/event-receiver/
-LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > $(PWD)/receivers.config
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > /etc/sematext/receivers.config
 }
 
 function generate_us_config()
 {
 echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
 EVENTS_RECEIVER_URL=https://apps.eu.sematext.com/event-receiver/
-LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > $(PWD)/receivers.config
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > /etc/sematext/receivers.config
 }
 
 function generate_upstart()
