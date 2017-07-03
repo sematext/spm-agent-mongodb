@@ -19,19 +19,28 @@ apt-get install libkrb5-dev
 # Install spm-agent-mongodb 
 npm i spm-agent-mongodb -g
 
+# In case you use Sematext Cloud EU (https://apps.eu.sematext.com): 
+#   configure the API endpoints for EU. 
+#   The  following commands create the file /etc/sematext/receivers.config: 
+# sudo spm-mongodb-setup -r EU 
+#   Note: To switch back to Sematext US region use
+# sudo spm-mongodb-setup -r US # default for apps.sematext.com
+
 # Install systemd or upstart service file for spm-agent-mongodb
-spm-mongodb-setup SPM_TOKEN mongodb://localhost:27017/local
+# Create an SPM App of type MongoDB in Sematext UI 
+# and use your SPM Token:
+sudo spm-mongodb-setup -t SPM_TOKEN -m mongodb://localhost:27017/local
 
 # or to specify the username and password for the agent to use to connect to MongoDB
-spm-mongodb-setup SPM_TOKEN mongodb://UsernameHere:PasswordHere@localhost:27017/DbNameHere
+sudo spm-mongodb-setup -t SPM_TOKEN -m mongodb://UsernameHere:PasswordHere@localhost:27017/DbNameHere
 ```
 Note that the monitoring agent requires admin rights to query the relevant tables. It should have ClusterAdmin role and read access to any DB.
 
 # Configuration 
 
-The setup script will store your configuration in /etc/spmagent/config 
+The setup script will store your configuration in /etc/sematext/spm-agent-mongodb.config 
 
-If you with to change the settings later edit /etc/spmagent/config. 
+If you with to change the settings later edit /etc/sematext/spm-agent-mongodb.config. 
 Then restart the SPM MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
