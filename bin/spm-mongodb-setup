@@ -2,6 +2,7 @@
 
 PLATFORM=$(uname)
 SERVICE_NAME=spm-agent-mongodb
+SPM_AGENT_CONFIG_FILE=/etc/sematext/spm-agent-mongodb.config
 LAUNCHCTL_SERVICE_FILE="/Library/LaunchDaemons/com.sematext.spm-agent-mongodb.plist"
 SYSTEMD_SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
 e=$'\e'
@@ -9,6 +10,66 @@ COLORblue="$e[0;36m"
 COLORred="$e[0;31m"
 COLORreset="$e[0m"
 #nodeExecutable=`$(which node)||$(which nodejs)`
+function generate_eu_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://event-receiver.eu.sematext.com
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > /etc/sematext/receivers.config
+}
+
+function generate_us_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://event-receiver.sematext.com
+LOGSENE_RECEIVER_URL=https://logsene-receiver.sematext.com" > /etc/sematext/receivers.config
+}
+
+export SPM_TOKEN=$1
+export MONGO_URL=$2
+
+while getopts ":t:m:r:" opt; do
+  case $opt in
+    t)
+      export SPM_TOKEN=$OPTARG
+      ;;
+    r)
+      export REGION=$OPTARG
+      if [ "$REGION" == "EU" ]; then 
+      		generate_eu_config
+      		exit 0
+      fi;
+      if [ "$REGION" == "US" ]; then 
+      		generate_us_config
+      		exit 0
+      fi;
+      ;;
+    m)
+      export MONGO_URL=$OPTARG
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      ;;
+  esac
+done
+
+export LOGSENE_RECEIVER_URL=${LOGSENE_RECEIVER_URL:-https://logsene-receiver.sematext.com}
+echo Set Logsene receiver url: $LOGSENE_RECEIVER_URL
+
+
+
+function generate_eu_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://apps.eu.sematext.com/event-receiver/
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > $(PWD)/receivers.config
+}
+
+function generate_us_config()
+{
+echo -e "SPM_RECEIVER_URL=https://spm-receiver.eu.sematext.com/receiver/v1
+EVENTS_RECEIVER_URL=https://apps.eu.sematext.com/event-receiver/
+LOGSENE_RECEIVER_URL=https://logsene-receiver.eu.sematext.com" > $(PWD)/receivers.config
+}
 
 function generate_upstart()
 {
@@ -96,7 +157,7 @@ runCommand "tail -n 10 /Library/Logs/spm-agent-mongodb.log" 4
 
 function install_script ()
 {
-	SPM_AGENT_CONFIG_FILE=/etc/spmagent/config
+	
 	mkdir /etc/spmagent
 
 printf '
@@ -104,12 +165,14 @@ tokens:
   spm: %s
 mongodb:
   url: 
-    - url: %s 
+    - url: %s
 
 logger:
   level: info
   console: true
-' $2 $3 > $SPM_AGENT_CONFIG_FILE
+' "$SPM_TOKEN" "$MONGO_URL" > $SPM_AGENT_CONFIG_FILE
+
+echo $SPM_AGENT_CONFIG_FILE
 runCommand "chown root $SPM_AGENT_CONFIG_FILE"
 runCommand "chmod 0600 $SPM_AGENT_CONFIG_FILE"
 
@@ -133,25 +196,28 @@ echo "Create config file: $SPM_AGENT_CONFIG_FILE"
 		return 
 	fi
 }
-command=$(which spm-agent-mongodb)
+
+command="$(which $SERVICE_NAME) --config ${SPM_AGENT_CONFIG_FILE}"
+
 echo $command
-if [[ -n "$1" && -n "$2" ]] ; then 
-  token=$1
-  mongodb=$2
+if [[ -n "${SPM_TOKEN}" && -n "${MONGO_URL}" ]] ; then 
+  export SPM_TOKEN=${SPM_TOKEN}
+  export MONGO_URL=${MONGO_URL}
+  echo
 else 
 	echo "${COLORred}Missing paramaters. Usage:"
-	echo `basename $0` "SPM_TOKEN MONGODB_URL (mongodb://dbuser:dbpassword@localhost:27017/admin)"
+	echo `basename $0` "-t SPM_TOKEN -m MONGODB_URL (mongodb://dbuser:dbpassword@localhost:27017/admin)"
 	echo "Please obtain your application token from https://apps.sematext.com/$COLORreset"
 	read -p "${COLORblue}SPM Token: $COLORreset" token
-	token=${token:-none}
+	SPM_TOKEN=${token:-none}
 	read -p "${COLORblue}MongoDB URL (mongodb://localhost:27017/admin):$COLORreset" mongodb
-	mongodb=${mongodb:-mongodb://localhost:27017/local}
+	MONGO_URL==${mongodb:-mongodb://localhost:27017/local}
 fi 
 
 regex='(mongodb)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]/.+'
-if [[ ${mongodb} =~ $regex ]]; then
-	install_script $command $token $mongodb; 
+if [[ ${MONGO_URL} =~ $regex ]]; then
+	install_script $command $SPM_TOKEN $MONGO_URL; 
 else
-	echo "${COLORred}Invalid MongoDB URL: ${mongodb}" 
+	echo "${COLORred}Invalid MongoDB URL: ${MONGO_URL}" 
     echo "Please use this URL format: mongodb://user:password@localhost:27017/db-name$COLORreset"
 fi
