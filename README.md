@@ -40,7 +40,7 @@ Note that the monitoring agent requires admin rights to query the relevant table
 
 The setup script will store your configuration in /etc/sematext/spm-agent-mongodb.config 
 
-If you with to change the settings later edit /etc/sematext/spm-agent-mongodb.config. 
+If you want to change the settings later edit /etc/sematext/spm-agent-mongodb.config. 
 Then restart the SPM MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
