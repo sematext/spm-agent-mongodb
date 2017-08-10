@@ -158,7 +158,7 @@ runCommand "tail -n 10 /Library/Logs/spm-agent-mongodb.log" 4
 function install_script ()
 {
 	
-	mkdir /etc/spmagent
+	mkdir /etc/sematext
 
 printf '
 tokens:
