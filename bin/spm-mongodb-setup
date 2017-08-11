@@ -78,7 +78,7 @@ start on runlevel [2345]
 stop on runlevel [06]
 respawn
 chdir  /tmp
-exec $1 " > /etc/init/${SERVICE_NAME}.conf
+exec $1 $2 $3" > /etc/init/${SERVICE_NAME}.conf
 runCommand "initctl reload-configuration"
 stop spm-agent-mongodb 2> /dev/null
 runCommand "start ${SERVICE_NAME}"
@@ -95,7 +95,7 @@ After=network.target
 [Service]
 Environment=SPM_LOG_TO_CONSOLE=true
 Restart=always\nRestartSec=10
-ExecStart=$1
+ExecStart=$1 $2 $3
 
 [Install]
 WantedBy=multi-user.target" > $SYSTEMD_SERVICE_FILE
@@ -135,6 +135,8 @@ echo -e \
     <key>ProgramArguments</key>
     <array>
         <string>$1</string>
+        <string>$2</string>
+        <string>$3</string>
     </array>
     <key>StandardErrorPath</key>
           <string>/Library/Logs/spm-agent-mongodb.log</string>
