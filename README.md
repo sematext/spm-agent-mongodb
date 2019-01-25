@@ -1,12 +1,12 @@
-[![bitHound Overalll Score](https://www.bithound.io/github/sematext/spm-agent-mongodb/badges/score.svg)](https://www.bithound.io/github/sematext/spm-agent-mongodb) [![Build Status](https://travis-ci.org/sematext/spm-agent-mongodb.svg?branch=master)](https://travis-ci.org/sematext/spm-agent-mongodb)
+[![Build Status](https://travis-ci.org/sematext/spm-agent-mongodb.svg?branch=master)](https://travis-ci.org/sematext/spm-agent-mongodb)
 
-This is the MongoDB monitoring Agent for [SPM Performance Monitoring](http://sematext.com/spm/)
+This is the MongoDB monitoring Agent for [Sematext MongoDB Monitoring](http://sematext.com/spm/)
 
 # Preparation 
 
 1. Get a free account at [sematext.com/spm](https://apps.sematext.com/users-web/register.do)  
 
-2. [Create an SPM App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "MongoDB" and copy the SPM Application Token - or execute the commands displayed in the Sematext UI (which are described here as well)
+2. [Create a Monitoring App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "MongoDB" and copy the App Token - or execute the commands displayed in the Sematext UI (which are described here as well)
 
 3. [Install Node.js](https://nodejs.org/en/download/package-manager/) on your MongoDB server
 
@@ -41,7 +41,7 @@ Note that the monitoring agent requires admin rights to query the relevant table
 The setup script will store your configuration in /etc/sematext/spm-agent-mongodb.config 
 
 If you want to change the settings later edit /etc/sematext/spm-agent-mongodb.config. 
-Then restart the SPM MongoDB Agent after config changes, depending on the init system:
+Then restart the Sematext MongoDB Agent after config changes, depending on the init system:
 - Upstart (Ubuntu):  
 ```
     sudo service spm-agent-mongodb restart 
@@ -68,7 +68,7 @@ The MongoDB agent is integrated in [SPM-Client docker image](https://hub.docker.
 The relevant SPM_CONFIG string ist: 
 ```mongodb SPM_TOKEN MONGODB_URL```. 
 
-Run SPM-Client, replace the SPM Token and MongoDB URL with your configuration: 
+Run SPM-Client, replace the App Token and MongoDB URL with your configuration: 
 ```
 docker run --name spm-client --restart=always -v /var/run/docker.sock:/var/run/docker.sock -e SPM_CONFIG="mongodb YOUR_SPM_MONGODB_TOKEN mongodb://mongodbUser:mogodbPassword@mongodb-server:port/database" sematext/spm-client
 ```
@@ -80,6 +80,7 @@ Docker-Compose example with SPM-Client and MongoDB server: [docker-compose.yml](
 ![Metrics Overview](https://sematext.files.wordpress.com/2015/12/mongodb_overview.png)
 
 More Information: 
+- [MongoDB monitoring integration](https://sematext.com/docs/integration/mongodb) 
 - [Announcement blog post](http://blog.sematext.com/2015/12/16/mongodb-monitoring/) 
 - [MongoDB reports video](https://www.youtube.com/watch?v=BIERrXzbiNM) 
 
