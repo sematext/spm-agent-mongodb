@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/sematext/spm-agent-mongodb.svg?branch=master)](https://travis-ci.org/sematext/spm-agent-mongodb)
 
-This is the MongoDB monitoring Agent for [Sematext MongoDB Monitoring](http://sematext.com/spm/)
+This is the MongoDB monitoring Agent for [MongoDB Monitoring](https://sematext.com/docs/integration/mongodb/) with [Sematext Cloud](https://sematext.com/cloud).
 
 # Preparation 
 
-1. Get a free account at [sematext.com/spm](https://apps.sematext.com/users-web/register.do)  
+1. Get a free [Sematext account](https://apps.sematext.com/ui/registration)  
 
 2. [Create a Monitoring App](https://apps.sematext.com/spm-reports/registerApplication.do) of type "MongoDB" and copy the App Token - or execute the commands displayed in the Sematext UI (which are described here as well)
 
@@ -81,11 +81,11 @@ Docker-Compose example with SPM-Client and MongoDB server: [docker-compose.yml](
 
 More Information: 
 - [MongoDB monitoring integration](https://sematext.com/docs/integration/mongodb) 
-- [Announcement blog post](http://blog.sematext.com/2015/12/16/mongodb-monitoring/) 
+- [Announcement blog post](https://blog.sematext.com/mongodb-monitoring/) 
 - [MongoDB reports video](https://www.youtube.com/watch?v=BIERrXzbiNM) 
 
 # Support 
 
-- Twitter: [@sematext](http://www.twitter.com/sematext)
-- Blog: [blog.sematext.com](http://blog.sematext.com)
-- Homepage: [www.sematext.com](http://www.sematext.com)
+- Twitter: [@sematext](https://www.twitter.com/sematext)
+- Blog: [blog.sematext.com](https://blog.sematext.com)
+- Homepage: [www.sematext.com](https://www.sematext.com)
