@@ -43,7 +43,7 @@
     "flat": "^5.0.0",
     "ls": "^0.2.1",
     "measured-core": "^1.51.1",
-    "mongodb": "^2.2.5",
+    "mongodb": "^3.3.4",
     "spm-agent": "^1.31.20",
     "spm-agent-os": "^1.30.14",
     "which": "^2.0.1"
