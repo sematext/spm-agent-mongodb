@@ -8,6 +8,11 @@
     "spm-mongodb-setup": "bin/spm-mongodb-setup",
     "spm-client-diagnostics": "./bin/spm-client-diagnostics.js"
   },
+  "scripts": {
+    "lint": "standard",
+    "auto-changelog": "auto-changelog",
+    "release": "release-it"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sematext/spm-agent-mongodb.git"
@@ -47,5 +52,25 @@
     "spm-agent": "^2.0.1",
     "spm-agent-os": "^1.30.14",
     "which": "^2.0.1"
+  },
+  "devDependencies": {
+    "auto-changelog": "^1.16.2",
+    "babel-eslint": "^10.0.3",
+    "release-it": "^13.5.8",
+    "standard": "^14.3.1"
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "tokenRef": "RELEASE_IT_GITHUB_TOKEN",
+      "releaseNotes": "npx auto-changelog --stdout --commit-limit false -u --template ./changelog.hbs",
+      "____comment": "\"assets\": [\"dist/agent-*\"]"
+    },
+    "hooks": {
+      "after:bump": "npx auto-changelog -p"
+    }
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
