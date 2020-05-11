@@ -6,7 +6,7 @@
   "bin": {
     "spm-agent-mongodb": "lib/index.js",
     "spm-mongodb-setup": "bin/spm-mongodb-setup",
-    "spm-client-diagnostics": "./bin/spm-client-diagnostics.js"
+    "spm-mongodb-diagnostics": "./bin/spm-mongodb-diagnostics.js"
   },
   "scripts": {
     "lint": "standard",
