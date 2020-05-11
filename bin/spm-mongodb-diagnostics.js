@@ -23,17 +23,15 @@ var systemInfo = {
   processEnvironment: process.env
 }
 
-var cfgDumpFileName = path.join(os.tmpdir(), 'spm-cfg-dump.txt')
+var cfgDumpFileName = path.join(os.tmpdir(), 'spm-mongodb-diagnostics.json')
 fs.writeFileSync(cfgDumpFileName, util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
 var logfiles = ls(config.logger.dir + '/*')
 zip.addLocalFile(cfgDumpFileName)
-// console.log ('Adding file ' + cfgDumpFileName)
 logfiles.forEach(function (f) {
-  // console.log ('Adding file ' + f.file )
   zip.addLocalFile(f.full)
 })
-var archFileName = path.join(os.tmpdir(), 'spm-diagnose.zip') 
+var archFileName = path.join(os.tmpdir(), 'spm-mongodb-diagnostics.zip')
 zip.writeZip(archFileName)
-console.log('SPM diagnostics info is in  ' + archFileName)
+console.log('SPM MongoDB diagnostics info is in: ' + archFileName)
 console.log('Please e-mail the file to support@sematext.com')
 fs.unlink(cfgDumpFileName, function () {})
