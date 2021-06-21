@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/sematext/spm-agent-mongodb.svg?branch=master)](https://travis-ci.org/sematext/spm-agent-mongodb)
 
-This is the MongoDB monitoring Agent for [MongoDB Monitoring](https://sematext.com/docs/integration/mongodb/) with [Sematext Cloud](https://sematext.com/cloud).
+This [Sematext Cloud](https://sematext.com/) agent for MongoDB monitoring has been deprecated. A new agent with much simpler setup is [available now](https://sematext.com/product-updates/#/2021/new-agents-for-nginx-apache-and-mongodb).  MongoDB monitoring can now be set up automatically via [service auto-discovery](https://sematext.com/blog/service-autodiscovery-automatic-monitoring/) and without the need to install any additional agents.  See [auto-discovery documentation](https://sematext.com/docs/monitoring/autodiscovery/).
+
+----
 
 # Preparation 
 
